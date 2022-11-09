@@ -28,7 +28,6 @@
         android:id="@+id/entrybox"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
         android:background="@drawable/superrectangle"
         android:contentDescription="rectangle"
         app:layout_constraintBottom_toTopOf="@+id/guideline27"
@@ -66,14 +65,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guide"
         app:layout_constraintTop_toTopOf="@+id/guideline32"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/Buyer_InputPassword"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:autofillHints=""
         android:background="@drawable/textbox"
         android:hint="Password"
         android:inputType="none"
@@ -81,9 +79,12 @@
         android:textColorHint="#b0b0b0"
         app:layout_constraintBottom_toTopOf="@+id/guideline35"
         app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guide"
-        app:layout_constraintTop_toTopOf="@+id/guideline34"
-        app:layout_constraintVertical_bias="0.652" />
+        app:layout_constraintTop_toTopOf="@+id/guideline34"/>
+
+
+
 
     <TextView
         android:id="@+id/btn_notabuyer"

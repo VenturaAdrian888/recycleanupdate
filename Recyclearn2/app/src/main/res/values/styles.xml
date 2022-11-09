@@ -11,4 +11,10 @@
     <style name="bold" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="roundimageview" parent="">
+
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+
+    </style>
 </resources>

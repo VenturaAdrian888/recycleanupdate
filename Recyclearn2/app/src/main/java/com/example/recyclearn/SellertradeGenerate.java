@@ -1,10 +1,12 @@
 package com.example.recyclearn;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,11 +28,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class SellerTrade extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class SellertradeGenerate extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public DrawerLayout drawerLayout;
     public NavigationView navigationView;
@@ -45,13 +52,73 @@ public class SellerTrade extends AppCompatActivity implements NavigationView.OnN
     private StorageReference storageReference;
 
     private CircleImageView Seller_Profile;
-
     private ImageView btn_drawer;
+
+
+    public ImageView qrOutput;
+
+    public Button btn_genqr;
+    public TextView kgInput0,wrongkg;
+
+    public static final String SELLER_INPUT = "SELLER_INPUT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seller_trade);
+        setContentView(R.layout.activity_sellertrade_generate);
+
+//retrive firebase fullname
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Seller_Users");
+        userID = user.getUid();
+
+        final TextView fullnametextview = findViewById(R.id.selleridname);
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User_Seller userprofile = snapshot.getValue(User_Seller.class);
+
+                if (userprofile != null) {
+                    String fullname = userprofile.fullName;
+                    fullnametextview.setText(fullname);
+                }
+        }
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+            Toast.makeText(SellertradeGenerate.this, "Something wrong happened!", Toast.LENGTH_LONG).show();
+        }
+    });
+//// qr
+        btn_genqr = findViewById(R.id.generatebutton);
+        qrOutput = findViewById(R.id.qrImage);
+        kgInput0 = findViewById(R.id.kgInput);
+
+        Intent receiverIntent = getIntent();
+        String receivedValue = receiverIntent.getStringExtra("KEY_SENDER");
+        kgInput0.setText(receivedValue);
+
+        btn_genqr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String sName = fullnametextview.getText().toString().trim();
+                String sText = kgInput0.getText().toString().trim();
+                MultiFormatWriter writer = new MultiFormatWriter();
+                try {
+                    BitMatrix matrix = writer.encode("Name: "+sName +"\nKilograms: "+ sText, BarcodeFormat.QR_CODE, 500, 500);
+
+                    BarcodeEncoder encoder = new BarcodeEncoder();
+
+                    Bitmap bitmap = encoder.createBitmap(matrix);
+
+                    qrOutput.setImageBitmap(bitmap);
+
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
 //drawer
         drawerLayout = findViewById(R.id.seller_drawer_layout2);
         navigationView = findViewById(R.id.nav_view2);
@@ -81,7 +148,7 @@ public class SellerTrade extends AppCompatActivity implements NavigationView.OnN
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(SellerTrade.this, "Something wrong happened!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SellertradeGenerate.this, "Something wrong happened!", Toast.LENGTH_SHORT).show();
             }
         });
 // display profile picture in navigation drawer
@@ -107,7 +174,21 @@ public class SellerTrade extends AppCompatActivity implements NavigationView.OnN
             }
         });
 
+        wrongkg = findViewById(R.id.wrongkg);
+        wrongkg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wrongQuantity();
+            }
+        });
+
+
+
     }
+
+
+
+
 
     private void navigationSellerDrawer() {
         navigationView.bringToFront();
@@ -149,32 +230,40 @@ public class SellerTrade extends AppCompatActivity implements NavigationView.OnN
 
         switch (menuitem.getItemId()) {
             case R.id.nav_sellerhome:
-                Intent intent = new Intent(SellerTrade.this, SellerDashboard.class);
+                Intent intent = new Intent(SellertradeGenerate.this, SellerDashboard.class);
                 startActivity(intent);
                 break;
             case  R.id.nav_sellerprofile:
-                Intent intent1 = new Intent(SellerTrade.this, SellerProfile.class);
+                Intent intent1 = new Intent(SellertradeGenerate.this, SellerProfile.class);
                 startActivity(intent1);
                 break;
             case R.id.nav_sellerlocation:
-               Intent intent2 = new Intent(SellerTrade.this, SellerLocation.class);
-               startActivity(intent2);
-               break;
+                Intent intent2 = new Intent(SellertradeGenerate.this, SellerLocation.class);
+                startActivity(intent2);
+                break;
             case R.id.nav_sellerinfo:
-                Intent intent3 = new Intent(SellerTrade.this, SellerFaqs.class);
+                Intent intent3 = new Intent(SellertradeGenerate.this, SellerFaqs.class);
                 startActivity(intent3);
                 break;
             case R.id.nav_sellerlogout:
-                Intent intent4 = new Intent(SellerTrade.this, MainActivity.class);
+                Intent intent4 = new Intent(SellertradeGenerate.this, MainActivity.class);
                 startActivity(intent4);
                 break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
     // Open seller profile
     public void opensellerprofile(){
-        Intent intent = new Intent(SellerTrade.this, SellerProfile.class);
+        Intent intent = new Intent(SellertradeGenerate.this, SellerProfile.class);
         startActivity(intent);
+    }
+    public void wrongQuantity(){
+        Intent goback = new Intent(SellertradeGenerate.this,SellerTradeGenQR.class);
+        startActivity(goback);
     }
 }
