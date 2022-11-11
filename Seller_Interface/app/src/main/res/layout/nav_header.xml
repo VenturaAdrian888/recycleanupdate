@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@drawable/gradient"
+    >
+
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imageView"
+        android:layout_width="121dp"
+        android:layout_height="125dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="100dp"
+        app:srcCompat="@drawable/user" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="231dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="20dp"
+        android:text="Username"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+</LinearLayout>

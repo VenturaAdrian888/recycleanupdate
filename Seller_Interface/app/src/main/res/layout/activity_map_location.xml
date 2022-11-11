@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient2"
+    android:fitsSystemWindows="true"
+    android:id="@+id/drawer_layout"
+    tools:context=".MapLocation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/maplocationContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/maplocationToolbar"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="55dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:logo="@drawable/hamburger" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="165dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="111dp"
+                android:text="RecylEarn"
+                android:textColor="#004080"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/imageView2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/maplocationToolbar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/maplocationProfile"
+                android:layout_width="75dp"
+                android:layout_height="58dp"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/user" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <fragment
+            android:id="@+id/google_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        </fragment>
+
+        <SearchView
+            android:id="@+id/sv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/search_bar"
+            android:elevation="5dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.175"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        </SearchView>
+
+        <ScrollView
+            android:id="@+id/scrollView3"
+            android:layout_width="match_parent"
+            android:layout_height="617dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/google_map">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1604dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#eef3da"
+                        app:cardElevation="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <TextView
+                            android:id="@+id/textView23"
+                            android:layout_width="324dp"
+                            android:layout_height="39dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="71dp"
+                            android:autoSizeTextType="uniform"
+                            android:fontFamily="serif-monospace"
+
+                            android:text="Drop-off Points:"
+                            android:textColor="#004080"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/google_map">
+
+
+                        </TextView>
+
+                        <pl.droidsonroids.gif.GifImageView
+                            android:layout_width="67dp"
+                            android:layout_height="83dp"
+                            android:layout_marginLeft="340dp"
+                            android:layout_marginTop="-15dp"
+                            android:src="@drawable/movingmap">
+
+                        </pl.droidsonroids.gif.GifImageView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="350dp"
+                            android:layout_height="250dp"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginTop="100dp"
+                            android:adjustViewBounds="true"
+                            android:clickable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="20dp"
+
+                            >
+
+                            <androidx.constraintlayout.utils.widget.ImageFilterButton
+                                android:id="@+id/SMBaguio"
+                                android:layout_width="350dp"
+                                android:layout_height="250dp"
+                                android:adjustViewBounds="true"
+                                android:clickable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:scaleType="fitXY"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView23"
+                                app:srcCompat="@drawable/baguiosm">
+
+                            </androidx.constraintlayout.utils.widget.ImageFilterButton>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <TextView
+                            android:layout_width="95dp"
+                            android:layout_height="31dp"
+                            android:layout_marginLeft="170dp"
+                            android:layout_marginTop="350dp"
+                            android:autoSizeTextType="uniform"
+                            android:text="SM Baguio"
+                            android:textColor="@color/black">
+
+                        </TextView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="350dp"
+                            android:layout_height="250dp"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginTop="400dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="20dp">
+
+                            <androidx.constraintlayout.utils.widget.ImageFilterButton
+                                android:id="@+id/LoakanAirport"
+                                android:layout_width="350dp"
+                                android:layout_height="250dp"
+                                android:adjustViewBounds="true"
+                                android:clickable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:scaleType="fitXY"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/SMBaguio"
+                                app:srcCompat="@drawable/loakanairport">
+
+                            </androidx.constraintlayout.utils.widget.ImageFilterButton>
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <TextView
+                            android:layout_width="123dp"
+                            android:layout_height="36dp"
+                            android:layout_marginLeft="150dp"
+                            android:layout_marginTop="650dp"
+                            android:autoSizeTextType="uniform"
+                            android:text="Loakan Airport"
+                            android:textColor="@color/black">
+
+                        </TextView>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="350dp"
+                            android:layout_height="250dp"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginTop="700dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="20dp">
+
+                            <androidx.constraintlayout.utils.widget.ImageFilterButton
+                                android:id="@+id/CaniezoJunkshop"
+                                android:layout_width="350dp"
+                                android:layout_height="250dp"
+                                android:adjustViewBounds="true"
+                                android:clickable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:scaleType="fitXY"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/SMBaguio"
+                                app:srcCompat="@drawable/canzieno">
+
+                            </androidx.constraintlayout.utils.widget.ImageFilterButton>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <TextView
+                            android:layout_width="139dp"
+                            android:layout_height="36dp"
+                            android:layout_marginLeft="150dp"
+                            android:layout_marginTop="950dp"
+                            android:autoSizeTextType="uniform"
+                            android:text="Caniezo Junkshop"
+                            android:textColor="@color/black">
+
+                        </TextView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="350dp"
+                            android:layout_height="250dp"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginTop="1000dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="20dp">
+
+
+                            <androidx.constraintlayout.utils.widget.ImageFilterButton
+                                android:id="@+id/UC"
+                                android:layout_width="350dp"
+                                android:layout_height="250dp"
+                                android:adjustViewBounds="true"
+                                android:clickable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:scaleType="fitXY"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/SMBaguio"
+                                app:srcCompat="@drawable/cordilleras">
+
+                            </androidx.constraintlayout.utils.widget.ImageFilterButton>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="217dp"
+                            android:layout_height="42dp"
+                            android:layout_marginLeft="100dp"
+                            android:layout_marginTop="1250dp"
+                            android:autoSizeTextType="uniform"
+                            android:text="University of the Coridlleras"
+                            android:textColor="@color/black">
+
+                        </TextView>
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/navigation_header_menu"
+        android:theme="@style/navigationTheme"
+        android:background="@drawable/gradient"
+        />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

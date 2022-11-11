@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="Navigation_view_Buyer"
+    >
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:title="Home"
+            android:icon="@drawable/homee"
+            />
+        <item
+            android:id="@+id/AboutUs"
+            android:title="About Us"
+            android:icon="@drawable/about"
+            />
+
+        <item
+            android:id="@+id/signout"
+            android:title="SignOut"
+            android:icon="@drawable/exit"
+            />
+
+
+    </group>
+
+
+
+
+</menu>
