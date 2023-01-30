@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="#E3EBFA">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:padding="10sp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/productIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/na"
+            android:layout_gravity="center"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/productTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product Title"
+                android:textSize="25dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/productPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/productTitle"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15sp"
+                android:text="Product Points"
+                android:layout_marginBottom="15sp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/productTitle"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="0dp"
+                android:layout_toEndOf="@+id/productPoints"
+                android:background="@drawable/points" />
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
